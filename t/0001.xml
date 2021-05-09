@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!-- english -->  
+<language>
+	<page id="1912019" voice="no">
+		<t id="1">Silencer: Assign To Station</t>
+		<!-- config -->
+		<t id="2">Debug log</t>
+		<t id="3">Do debug function</t>
+		<!-- orders -->
+		<t id="2001">Assign to station</t>
+	</page>
+</language>

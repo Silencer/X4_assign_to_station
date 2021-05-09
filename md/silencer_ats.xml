@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdscript name="silencer_assign_to_station" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../origin/md/md.xsd">
+	<cues>
+		<cue name="silencerATS">
+			<conditions>
+				<check_any>
+					<event_cue_signalled cue="md.Setup.GameStart" />
+					<event_game_loaded />
+				</check_any>
+			</conditions>
+			<actions>
+				<set_value name="$ATS_debugChance" exact="100" />
+				<debug_text text="'MOD: Assign to Station: $ATS_debugChance: ' + $ATS_debugChance" />
+				<set_value name="$traderTypes" exact="[shiptype.courier, shiptype.transporter, shiptype.freighter]"/>
+				<set_value name="$minerTypes" exact="[shiptype.miner, shiptype.largeminer]"/>				
+			</actions>
+			<cues>
+				<cue name="InteractMenu_AddAssignToStation" instantiate="true">
+					<conditions>
+						<event_cue_signalled cue="md.Interact_Menu_API.Get_Actions" />
+					</conditions>
+					<actions>
+						<set_value name="$ship" exact="@event.param.$selectedplayerships.{1}" />
+						<set_value name="$target" exact="@event.param.$object" />
+						<do_if value="$ship and $ship.owner == faction.player">
+							<set_value name="$section" exact="'selected_orders'" />						
+							
+							<do_if value="($target) and ($target.owner == faction.player)">	
+								<set_value name="$text" exact="{1912019, 2001}" comment="Assign this ship to station" />
+								<signal_cue_instantly cue="md.Interact_Menu_API.Add_Action" param = "table[
+									$id = 'order_assign_to_station',
+									$section = $section,
+									$text = $text,
+									$icon = 'order_movewait',
+									$callback = InteractMenu_OnAssignToStation,
+									$echo='AssignToStation'
+								]" />
+							</do_if>						
+						</do_if>
+						<cancel_cue cue="this" />
+					</actions>
+				</cue>
+			
+				<cue name="InteractMenu_OnAssignToStation">
+					<conditions>
+						<event_cue_signalled />
+					</conditions>
+					<actions>
+						<set_value name="$station" exact="event.param.$object" />
+						<set_value name="$assignType" exact="event.param.$echo" />
+
+						<do_if value="$assignType == 'AssignToStation'">
+							<do_for_each name="$ship" in="@event.param.$selectedplayerships">
+							<do_if value="$ship and $ship.owner == faction.player">
+									<debug_text text="'Assign to station: $ship=' + $ship + '(' + $ship.type + '), $station=' + $station + ', ' + $assignType" chance="$ATS_debugChance" />
+									<do_if value="$traderTypes.indexof.{$ship.type}">
+										<set_object_commander object="$ship" commander="$station" assignment="assignment.trade" />	
+									</do_if>
+									<do_elseif value="$minerTypes.indexof.{$ship.type}">
+										<set_object_commander object="$ship" commander="$station" assignment="assignment.mining" />	
+									</do_elseif>					
+									<do_else>
+										<set_object_commander object="$ship" commander="$station" assignment="assignment.defence" />	
+									</do_else>
+								</do_if>		
+							</do_for_each>
+						</do_if>
+
+						<reset_cue cue="this" />
+					</actions>
+				</cue>
+			</cues>
+		</cue>
+	</cues>
+</mdscript>
