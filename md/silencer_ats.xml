@@ -25,7 +25,7 @@
 						<do_if value="$ship and $ship.owner == faction.player">
 							<set_value name="$section" exact="'selected_orders'" />						
 							
-							<do_if value="($target) and ($target.owner == faction.player)">	
+							<do_if value="($target) and ($target.owner == faction.player) and ($target.isclass.station)">	
 								<set_value name="$text" exact="{1912019, 2001}" comment="Assign this ship to station" />
 								<signal_cue_instantly cue="md.Interact_Menu_API.Add_Action" param = "table[
 									$id = 'order_assign_to_station',
@@ -52,7 +52,7 @@
 						<do_if value="$assignType == 'AssignToStation'">
 							<do_for_each name="$ship" in="@event.param.$selectedplayerships">
 							<do_if value="$ship and $ship.owner == faction.player">
-									<debug_text text="'Assign to station: $ship=' + $ship + '(' + $ship.type + '), $station=' + $station + ', ' + $assignType" chance="$ATS_debugChance" />
+								<debug_text text="'Assign to station: $ship=' + $ship + '(' + $ship.type + '), $station=' + $station + ', ' + $assignType" chance="$ATS_debugChance" />
 									<do_if value="$traderTypes.indexof.{$ship.type}">
 										<set_object_commander object="$ship" commander="$station" assignment="assignment.trade" />	
 									</do_if>
