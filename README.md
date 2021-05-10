@@ -15,7 +15,7 @@ This problem it's a management of such fleets, for example to mine in one sector
 Miners and Traders not work as expected (their ignore initial behavior because probably station manager assign new task themself), only military ships or ships with another than trade/mine order (like inventory collector for example) keep they custom behavior
 
 # Installtion
-1) Just download as ZIP archive
+1) Just download latest release as ZIP archive (click on Releases and select latest release archive)
 2) Create folder inside <Path to X4>/extensions/silencer_assign_to_station
 3) Unpack there archieve
 
