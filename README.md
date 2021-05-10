@@ -12,7 +12,7 @@ This problem it's a management of such fleets, for example to mine in one sector
 1. Traders - I use MOD Extended Mule and Warehouses and it already somehow do this, when you assign any mule to station it keep selected behavior, so on this part it's already implemented, but anyway why don't assign ship with vanilla custom trade rule to specific station.
 
 # Installtion
-1) Just download as ZIP archieve
+1) Just download as ZIP archive
 2) Create folder inside <Path to X4>/extensions/silencer_assign_to_station
 3) Unpack there archieve
 
