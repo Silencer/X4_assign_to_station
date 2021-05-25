@@ -11,6 +11,9 @@ This problem it's a management of such fleets, for example to mine in one sector
 
 1. Traders - I use MOD Extended Mule and Warehouses and it already somehow do this, when you assign any mule to station it keep selected behavior, so on this part it's already implemented, but anyway why don't assign ship with vanilla custom trade rule to specific station.
 
+# How to use:
+Just select ship or fleet and right click on station and select "Assign to", that's all this ship (fleet) will be under new group with defence role but custom behavior will be keeped
+
 # Known issues
 Miners and Traders not work as expected (their ignore initial behavior because probably station manager assign new task themself), only military ships or ships with another than trade/mine order (like inventory collector for example) keep they custom behavior
 
