@@ -16,7 +16,7 @@ Miners and Traders not work as expected (their ignore initial behavior because p
 
 # Installtion
 1) Just download latest release as ZIP archive (click on Releases and select latest release archive)
-2) Unpack it into the <Path to X4>/extensions/ 
+2) Unpack it into the [Path to X4]/extensions/ 
 
-So as result will be created new one folder with mod content: <Path to X4>/extensions/X4_assign_to_station-0.0.2
+So as result will be created new one folder with mod content: [Path to X4]/extensions/X4_assign_to_station-0.0.2
 
